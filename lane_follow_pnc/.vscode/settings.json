@@ -109,6 +109,10 @@
         "set": "cpp",
         "string": "cpp",
         "string_view": "cpp",
-        "*.tpp": "cpp"
+        "*.tpp": "cpp",
+        "*.txx": "cpp",
+        "condition_variable": "cpp",
+        "future": "cpp",
+        "mutex": "cpp"
     }
 }

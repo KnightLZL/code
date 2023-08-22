@@ -1,4 +1,4 @@
-# Install script for directory: /media/lee/ZLLee/20230627实习/lane_follow_pnc
+# Install script for directory: /home/lee/文档/lane_follow_pnc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/media/lee/ZLLee/20230627实习/lane_follow_pnc/build/src/cmake_install.cmake")
+  include("/home/lee/文档/lane_follow_pnc/build/src/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/media/lee/ZLLee/20230627实习/lane_follow_pnc/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lee/文档/lane_follow_pnc/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

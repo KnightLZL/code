@@ -8,9 +8,11 @@
  * @copyright Copyright (c) 2023
  *
  */
-#include "common.h"
-using namespace std;
+#include "../include/common.h"
+
 #include <vector>
+
+using namespace std;
 
 namespace lane_follow_pnc
 {
@@ -299,11 +301,36 @@ namespace lane_follow_pnc
     }
 
     //计算frenet坐标
+    // FrenetPoint calcFrenet(const CarState &global_point,
+    //                             const std::vector<PathPoint> &ref_path)
+    // {
+    //     //计算匹配点下标
+    //     int frenet_match_index = searchMatchIndex(global_point.x, global_point.y, ref_path, 0 );
+
+    //     //通过匹配点求投影点
+    //     PathPoint projection_point = match2Projection(global_point, ref_path[frenet_match_index]);
+
+    //     //计算frenet坐标
+    //     FrenetPoint frenet_point = Cartesain2Frenet(global_point, projection_point);
+
+    //     return frenet_point;
+    // }
+
+    // 计算投影点坐标的s
+    void  cal_s( FrenetPoint &point,  PathPoint & host_point)
+    {
+        point.s = point.s - host_point.s_;
+    }
+
+
+    // 计算frenet坐标重载
     FrenetPoint calcFrenet(const CarState &global_point,
-                                const std::vector<PathPoint> &ref_path)
+                                const std::vector<PathPoint> &ref_path, const int pre_match_index,
+                                PathPoint & host_point)
     {
         //计算匹配点下标
-        int frenet_match_index = searchMatchIndex(global_point.x, global_point.y, ref_path, 0 );
+        int frenet_match_index = searchMatchIndex(global_point.x, global_point.y, ref_path, pre_match_index);
+        // int frenet_match_index = match_point_index;
 
         //通过匹配点求投影点
         PathPoint projection_point = match2Projection(global_point, ref_path[frenet_match_index]);
@@ -311,7 +338,71 @@ namespace lane_follow_pnc
         //计算frenet坐标
         FrenetPoint frenet_point = Cartesain2Frenet(global_point, projection_point);
 
+        // 计算对应的s
+        cal_s(frenet_point, host_point);
+
+
         return frenet_point;
+    }
+
+
+    //将角度值归一化到-pi , pi之间
+    double NormalizeAngle(const double angle) 
+    {
+        //fmod取模操作
+        double a = std::fmod(angle + M_PI, 2.0 * M_PI);
+
+        //如果为负数，让其变为正数
+        if (a < 0.0) 
+        {
+            a += (2.0 * M_PI);
+        }
+        return a - M_PI;
+    }
+
+
+    /*****************frenet 2 cartesian********************/
+    void Frenet2Cartesian( const double rs, const double rx, const double ry, const double rtheta,
+                                    const double rkappa, const double rdkappa,
+                                    const std::array<double, 3>& s_condition,
+                                    const std::array<double, 3>& d_condition, double* const ptr_x,
+                                    double* const ptr_y, double* const ptr_theta, double* const ptr_kappa,
+                                    double* const ptr_v, double* const ptr_a) 
+    {
+
+        const double cos_theta_r = std::cos(rtheta);
+        const double sin_theta_r = std::sin(rtheta);
+
+        *ptr_x = rx - sin_theta_r * d_condition[0];
+        *ptr_y = ry + cos_theta_r * d_condition[0];
+
+        const double one_minus_kappa_r_d = 1 - rkappa * d_condition[0];
+
+        const double tan_delta_theta = d_condition[1] / one_minus_kappa_r_d;
+        const double delta_theta = std::atan2(d_condition[1], one_minus_kappa_r_d);
+        const double cos_delta_theta = std::cos(delta_theta);
+
+        *ptr_theta = NormalizeAngle(delta_theta + rtheta);
+
+        const double kappa_r_d_prime =
+            rdkappa * d_condition[0] + rkappa * d_condition[1];
+        *ptr_kappa = (((d_condition[2] + kappa_r_d_prime * tan_delta_theta) *
+                        cos_delta_theta * cos_delta_theta) /
+                        (one_minus_kappa_r_d) +
+                    rkappa) *
+                    cos_delta_theta / (one_minus_kappa_r_d);
+
+        const double d_dot = d_condition[1] * s_condition[1];
+        *ptr_v = std::sqrt(one_minus_kappa_r_d * one_minus_kappa_r_d *
+                                s_condition[1] * s_condition[1] +
+                            d_dot * d_dot);
+
+        const double delta_theta_prime =
+            one_minus_kappa_r_d / cos_delta_theta * (*ptr_kappa) - rkappa;
+
+        *ptr_a = s_condition[2] * one_minus_kappa_r_d / cos_delta_theta +
+                s_condition[1] * s_condition[1] / cos_delta_theta *
+                    (d_condition[1] * delta_theta_prime - kappa_r_d_prime);
     }
 
 } //namespace lane_follow_pnc

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/lee/ZLLee/20230627实习/lane_follow_pnc
+CMAKE_SOURCE_DIR = /home/lee/文档/lane_follow_pnc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/lee/ZLLee/20230627实习/lane_follow_pnc/build
+CMAKE_BINARY_DIR = /home/lee/文档/lane_follow_pnc/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(CMAKE_COMMAND) -E cmake_progress_start /media/lee/ZLLee/20230627实习/lane_follow_pnc/build/CMakeFiles /media/lee/ZLLee/20230627实习/lane_follow_pnc/build/src/CMakeFiles/progress.marks
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/lee/ZLLee/20230627实习/lane_follow_pnc/build/CMakeFiles 0
+	cd /home/lee/文档/lane_follow_pnc/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/lee/文档/lane_follow_pnc/build/CMakeFiles /home/lee/文档/lane_follow_pnc/build/src/CMakeFiles/progress.marks
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lee/文档/lane_follow_pnc/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,33 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/lee/文档/lane_follow_pnc/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/demo.dir/rule:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/demo.dir/rule
-.PHONY : src/CMakeFiles/demo.dir/rule
+src/CMakeFiles/demo1.dir/rule:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/demo1.dir/rule
+.PHONY : src/CMakeFiles/demo1.dir/rule
 
 # Convenience name for target.
-demo: src/CMakeFiles/demo.dir/rule
+demo1: src/CMakeFiles/demo1.dir/rule
 
-.PHONY : demo
+.PHONY : demo1
 
 # fast build rule for target.
-demo/fast:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/build
-.PHONY : demo/fast
+demo1/fast:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/build
+.PHONY : demo1/fast
+
+collision_detection/collision_detection.o: collision_detection/collision_detection.cpp.o
+
+.PHONY : collision_detection/collision_detection.o
+
+# target to build an object file
+collision_detection/collision_detection.cpp.o:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/collision_detection/collision_detection.cpp.o
+.PHONY : collision_detection/collision_detection.cpp.o
+
+collision_detection/collision_detection.i: collision_detection/collision_detection.cpp.i
+
+.PHONY : collision_detection/collision_detection.i
+
+# target to preprocess a source file
+collision_detection/collision_detection.cpp.i:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/collision_detection/collision_detection.cpp.i
+.PHONY : collision_detection/collision_detection.cpp.i
+
+collision_detection/collision_detection.s: collision_detection/collision_detection.cpp.s
+
+.PHONY : collision_detection/collision_detection.s
+
+# target to generate assembly for a file
+collision_detection/collision_detection.cpp.s:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/collision_detection/collision_detection.cpp.s
+.PHONY : collision_detection/collision_detection.cpp.s
 
 common.o: common.cpp.o
 
@@ -131,7 +158,7 @@ common.o: common.cpp.o
 
 # target to build an object file
 common.cpp.o:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/common.cpp.o
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/common.cpp.o
 .PHONY : common.cpp.o
 
 common.i: common.cpp.i
@@ -140,7 +167,7 @@ common.i: common.cpp.i
 
 # target to preprocess a source file
 common.cpp.i:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/common.cpp.i
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/common.cpp.i
 .PHONY : common.cpp.i
 
 common.s: common.cpp.s
@@ -149,8 +176,35 @@ common.s: common.cpp.s
 
 # target to generate assembly for a file
 common.cpp.s:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/common.cpp.s
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/common.cpp.s
 .PHONY : common.cpp.s
+
+em_planner/em_planner.o: em_planner/em_planner.cpp.o
+
+.PHONY : em_planner/em_planner.o
+
+# target to build an object file
+em_planner/em_planner.cpp.o:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/em_planner/em_planner.cpp.o
+.PHONY : em_planner/em_planner.cpp.o
+
+em_planner/em_planner.i: em_planner/em_planner.cpp.i
+
+.PHONY : em_planner/em_planner.i
+
+# target to preprocess a source file
+em_planner/em_planner.cpp.i:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/em_planner/em_planner.cpp.i
+.PHONY : em_planner/em_planner.cpp.i
+
+em_planner/em_planner.s: em_planner/em_planner.cpp.s
+
+.PHONY : em_planner/em_planner.s
+
+# target to generate assembly for a file
+em_planner/em_planner.cpp.s:
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/em_planner/em_planner.cpp.s
+.PHONY : em_planner/em_planner.cpp.s
 
 main.o: main.cpp.o
 
@@ -158,7 +212,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/main.cpp.o
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -167,7 +221,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/main.cpp.i
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -176,7 +230,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/main.cpp.s
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 reference_line/reference_line.o: reference_line/reference_line.cpp.o
@@ -185,7 +239,7 @@ reference_line/reference_line.o: reference_line/reference_line.cpp.o
 
 # target to build an object file
 reference_line/reference_line.cpp.o:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/reference_line/reference_line.cpp.o
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/reference_line/reference_line.cpp.o
 .PHONY : reference_line/reference_line.cpp.o
 
 reference_line/reference_line.i: reference_line/reference_line.cpp.i
@@ -194,7 +248,7 @@ reference_line/reference_line.i: reference_line/reference_line.cpp.i
 
 # target to preprocess a source file
 reference_line/reference_line.cpp.i:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/reference_line/reference_line.cpp.i
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/reference_line/reference_line.cpp.i
 .PHONY : reference_line/reference_line.cpp.i
 
 reference_line/reference_line.s: reference_line/reference_line.cpp.s
@@ -203,7 +257,7 @@ reference_line/reference_line.s: reference_line/reference_line.cpp.s
 
 # target to generate assembly for a file
 reference_line/reference_line.cpp.s:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo.dir/build.make src/CMakeFiles/demo.dir/reference_line/reference_line.cpp.s
+	cd /home/lee/文档/lane_follow_pnc/build && $(MAKE) -f src/CMakeFiles/demo1.dir/build.make src/CMakeFiles/demo1.dir/reference_line/reference_line.cpp.s
 .PHONY : reference_line/reference_line.cpp.s
 
 # Help Target
@@ -213,11 +267,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... demo"
+	@echo "... demo1"
 	@echo "... edit_cache"
+	@echo "... collision_detection/collision_detection.o"
+	@echo "... collision_detection/collision_detection.i"
+	@echo "... collision_detection/collision_detection.s"
 	@echo "... common.o"
 	@echo "... common.i"
 	@echo "... common.s"
+	@echo "... em_planner/em_planner.o"
+	@echo "... em_planner/em_planner.i"
+	@echo "... em_planner/em_planner.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -235,6 +295,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /media/lee/ZLLee/20230627实习/lane_follow_pnc/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/lee/文档/lane_follow_pnc/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

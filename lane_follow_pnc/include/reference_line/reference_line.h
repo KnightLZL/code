@@ -10,7 +10,7 @@
  */
 
 #ifndef REFERENCELINE_H
-#define ReFERENCELINE_H
+#define REFERENCELINE_H
 
 #include <algorithm>
 #include <cfloat>
@@ -21,7 +21,7 @@
 #include <Eigen/Eigen>
 #include "OsqpEigen/OsqpEigen.h"
 #include "../point_types.h"
-#include "reference_line/cubic_spline.hpp"
+#include "../reference_line/cubic_spline.hpp"
 #include "../common.h"
 
 

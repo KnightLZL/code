@@ -1,4 +1,4 @@
-# Install script for directory: /media/lee/ZLLee/20230627实习/lane_follow_pnc/src
+# Install script for directory: /home/lee/文档/lane_follow_pnc/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

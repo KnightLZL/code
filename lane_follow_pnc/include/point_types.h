@@ -61,11 +61,11 @@ namespace lane_follow_pnc
 
         //对形状求导
         double l_ds;
-        double  l_d_ds;
+        double l_d_ds;
         double l_d_d_ds;
         double ds;  //用以计算曲率
 
-        //dp path中用以计算cost
+        //dp path中用以计算cost和记录晦朔路径的信息
         double dp_cost;   //记录该点到起点的代价
         int  dp_pre_row;  //该点最小cost的上一个点的行号
     };
@@ -73,7 +73,7 @@ namespace lane_follow_pnc
     class FrenetPath
     {
         public:
-        double cost;
+        double cost;  //当前路径段障碍物的碰撞代价
         std::vector<FrenetPoint> frenet_path;
         int size_ = 0; //用以记录有效点的个数
 

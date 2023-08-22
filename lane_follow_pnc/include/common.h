@@ -48,8 +48,25 @@ namespace lane_follow_pnc
     //笛卡尔坐标系转fernet坐标系
     FrenetPoint Cartesain2Frenet( const CarState &global_point,
                                 const PathPoint &projection_point);
+
     FrenetPoint calcFrenet(const CarState &global_point,
-                                const std::vector<PathPoint> &ref_path);
+                                const std::vector<PathPoint> &ref_path,
+                                const int pre_match_index,
+                                PathPoint & host_point);
+
+    //归一化角度
+    double NormalizeAngle(const double angle);
+
+    //计算frenet坐标系的s，确保每次的frenet坐标系的原点都是车辆定位点的匹配点 
+    void  cal_s( FrenetPoint &point,  PathPoint & host_point);
+
+    // frenet转cartesian
+    void Frenet2Cartesian( const double rs, const double rx, const double ry, const double rtheta,
+                                const double rkappa, const double rdkappa,
+                                const std::array<double, 3>& s_condition,
+                                const std::array<double, 3>& d_condition, double* const ptr_x,
+                                double* const ptr_y, double* const ptr_theta, double* const ptr_kappa,
+                                double* const ptr_v, double* const ptr_a); 
 
 }//lane_follow_pnc
 

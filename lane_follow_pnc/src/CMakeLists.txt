@@ -27,7 +27,9 @@ include_directories(
 set(SRC_LIST
     ./common.cpp
     ./main.cpp
-    ./reference_line/reference_line.cpp)
+    ./reference_line/reference_line.cpp
+    ./collision_detection/collision_detection.cpp
+    ./em_planner/em_planner.cpp)
 
 #添加头文件
 include_directories(../include)
@@ -35,11 +37,17 @@ include_directories(../include)
 #添加reference_line下的头文件
 include_directories(../include/reference_line)
 
-add_executable(demo ${SRC_LIST})
+include_directories(../include/collision_detection)
+
+include_directories(../include/polynomial)
+
+include_directories(../include/em_planner)
+
+add_executable(demo1 ${SRC_LIST})
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 # 将OSQpeigen链接到目标demo中
-target_link_libraries(demo 
+target_link_libraries(demo1 
     ${EIGEN3_LIBRARIES}
     OsqpEigen::OsqpEigen)

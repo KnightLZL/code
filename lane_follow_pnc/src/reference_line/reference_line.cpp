@@ -123,7 +123,8 @@ namespace lane_follow_pnc
     void ReferenceLine::discrete_points_osqp(std::vector<std::pair<double,double>> &path_point2d)
     {
         int n = path_point2d.size();
-        cout<<n<<endl;
+        cout<<"参考线平滑的二次规划求解规模为："<<2*n<<endl;
+        // cout<<n<<endl;
 
         // 初始化A1, A2, A3, f,lb, ub矩阵
         // 平滑代价系数矩阵， x' A1' A1 x,(n-2)
@@ -170,11 +171,11 @@ namespace lane_follow_pnc
             ub[2*i+1] = path_point2d[i].second + y_upper_bound;     
         }
 
-        cout<<"输出约束向量"<<endl;
-        for(int i =0; i<2*n; i++)
-        {
-            cout<<lb[i]<<"\t"<<f[i]<<"\t"<<ub[i]<<endl;
-        }
+        // cout<<"输出约束向量"<<endl;
+        // for(int i =0; i<2*n; i++)
+        // {
+        //     cout<<lb[i]<<"\t"<<f[i]<<"\t"<<ub[i]<<endl;
+        // }
 
         // 给平滑代价矩阵A1赋值
         for(int j =0; j<n-2; j++)
@@ -223,10 +224,12 @@ namespace lane_follow_pnc
             cout<<"QSQP init failed"<<endl;
             return;
         }
+
         if(!solver.solve())
         {
             cout<<"QSQP solve failed"<<endl;
         }
+
         //获取最后的优化量
         qp_solution = solver.getSolution();
 
